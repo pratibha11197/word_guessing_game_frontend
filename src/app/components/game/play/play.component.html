@@ -1,0 +1,33 @@
+<div class="master">
+  <div class="main-container">
+    <div>
+      <div class="cloudy"></div>
+      <div class="cloudy"></div>
+      <div class="cloudy"></div>
+      <div class="life-main-container">
+        <div class="life-container" style="margin-left: 1%;">
+            <div style="color: rgb(2, 123, 2); font-weight: 600;">Life:</div>
+            <div style="margin-left: 5%; color: red; font-weight: 1000; font-family: sans-serif;">{{life}}</div>
+        </div>
+        <div class="life-container">
+          <div style="color: rgb(233, 5, 5); font-weight: 600;"><a class="next-btn" (click)="playNext()">Next</a></div>
+      </div>
+    </div>
+      <div class="container">
+        <div *ngFor="let w of word">
+         <span class="word" *ngIf="w == '*'">{{'_'}}</span>
+          <span class="word" *ngIf="w != '*'">{{w}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="play-btn-container">
+      <input class="input-field" style="width: 150px; height: 26px; margin-right: 15px; padding-left:15px; border: 0px; border-bottom: 2px solid rgb(4, 0, 0); background-color: rgba(240, 248, 255, 0); margin-top: 1rem;" type="text" [(ngModel)]="guessdedWord" placeholder="Enter Guessed Word">
+      <!-- <div class="play-button"> -->
+        <a class="play-button" (click)="guess()">Guess</a>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>
+<app-game-win-popup *ngIf="showWinPopup" (closePopup)="closeWinPopup()"></app-game-win-popup>
+<app-game-loose-popup *ngIf="showLoosePopup" (closePopup)="closeLoosePopup()"></app-game-loose-popup>
+<app-game-over-popup *ngIf="showOverPopup" (closePopup)="closeGameOverPopup()"></app-game-over-popup>
